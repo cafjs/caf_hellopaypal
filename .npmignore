@@ -1,0 +1,9 @@
+*~
+test
+.npmignore
+.gitmodules
+coverage
+build.js
+build.min.js
+all.tgz
+npm-shrinkwrap.json
