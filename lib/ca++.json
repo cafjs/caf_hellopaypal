@@ -2,6 +2,44 @@
     "name" : "ca",
     "components" : [
         {
+            "module": "caf_paypal#plug_ca",
+            "name": "paypal",
+            "description": "Manages PayPal transactions for this CA.",
+            "env" : {
+                "maxRetries" : "$._.env.maxRetries",
+                "retryDelay" : "$._.env.retryDelay"
+            },
+            "components" : [
+                {
+                    "module": "caf_paypal#proxy",
+                    "name": "proxy",
+                    "description": "Provides PayPal transactions.",
+                    "env" : {
+
+                    }
+                }
+            ]
+        },
+        {
+            "module": "caf_users#plug_ca",
+            "name": "users",
+            "description": "Manages user profiles for this CA.",
+            "env" : {
+                "maxRetries" : "$._.env.maxRetries",
+                "retryDelay" : "$._.env.retryDelay"
+            },
+            "components" : [
+                {
+                    "module": "caf_users#proxy",
+                    "name": "proxy",
+                    "description": "Provides user profile API.",
+                    "env" : {
+
+                    }
+                }
+            ]
+        },
+        {
             "module": "caf_react#plug_ca",
             "name": "react",
             "description": "Manages background rendering for this CA.",
@@ -27,7 +65,8 @@
                 {
                     "name": "props",
                     "env" : {
-                        "divisor": "process.env.DIVISOR||5"
+                        "pulsesForCaptureRetry": "process.env.PULSES_FOR_USER_INFO_RELOAD||60",
+                        "orderExpireTimeInSec" : "process.env.ORDER_EXPIRE_TIME_IN_SEC||3600"
                     }
                 }
             ]

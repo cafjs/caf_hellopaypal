@@ -16,6 +16,46 @@
             "name": "cp2"
         },
         {
+            "module": "caf_paypal#plug",
+            "name": "paypal",
+            "description": "Manage PayPal transactions\n",
+            "env": {
+                "fixExpense": "process.env.FIX_EXPENSE||0.3",
+                "expensePerDollar": "process.env.EXPENSE_PER_DOLLAR||0.029",
+                "payPalFile": "process.env.PAYPAL_FILE||paypal.json",
+                "payPalDir": "process.env.PAYPAL_DIR||null"
+            }
+        },
+        {
+            "module": "caf_users#plug",
+            "name": "users",
+            "description": "Manage user profiles\n",
+            "env": {
+                "reloadUsersIntervalInSec" : "process.env.RELOAD_USERS_INTERVAL_IN_SEC||3600",
+                "accountsApp" : "$._.env.accountsApp",
+                "defaultUnits" : "process.env.DEFAULT_UNITS||10",
+                "defaultTimePerUnit" : "process.env.DEFAULT_TIME_PER_UNIT||30",
+                "defaultHoldTimeInSec" : "process.env.DEFAULT_HOLD_TIME_IN_SEC||3600",
+                "appWriterFraction" : "process.env.APP_WRITER_FRACTION||0.5",
+                "appPublishCost" : "process.env.APP_PUBLISH_COST||1",
+                "appRegisterCost" : "process.env.APP_REGISTER_COST||7",
+                "appName" : "process.env.APP_USERS_NAME||null",
+                "preRegisterUsers" : ["foo", "root"],
+                "preRegisterApp" : ["root","gadget", "root","process.env.PRE_REGISTER_APP_LOCAL_NAME||"],
+                "paas" : "$._.env.redisPaaS",
+                "redis" : {
+                    "password" : "$._.env.redisPassword",
+                    "port" : "process.env.REDIS_PORT_6379_TCP_PORT||6379",
+                    "hostname" : "process.env.REDIS_PORT_6379_TCP_ADDR||localhost"
+                },
+                "coalescing" : {
+                    "interval" : 10,
+                    "maxPendingUpdates" : 10
+                },
+                "compressState": "process.env.COMPRESS_STATE||true"
+            }
+        },
+        {
             "name" : "react",
             "module": "caf_react#plug",
             "description": "React.js background rendering",
