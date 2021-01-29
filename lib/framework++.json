@@ -2,7 +2,7 @@
     "name": "top",
     "env" : {
         "appPublisher" :"process.env.APP_PUBLISHER||root",
-        "appLocalName" : "process.env.APP_LOCAL_NAME||template",
+        "appLocalName" : "process.env.APP_LOCAL_NAME||hellopaypal",
         "appSuffix" : "process.env.APP_SUFFIX||cafjs.com"
      },
     "components": [
@@ -23,7 +23,11 @@
                 "fixExpense": "process.env.FIX_EXPENSE||0.3",
                 "expensePerDollar": "process.env.EXPENSE_PER_DOLLAR||0.029",
                 "payPalFile": "process.env.PAYPAL_FILE||paypal.json",
-                "payPalDir": "process.env.PAYPAL_DIR||null"
+                "payPalDir": "process.env.PAYPAL_DIR||null",
+                "payPalClientId": "process.env.PAYPAL_CLIENT_ID||",
+                "payPalClientSecret": "process.env.PAYPAL_CLIENT_SECRET||",
+                "payPalIsSandbox": "process.env.PAYPAL_IS_SANDBOX||"
+
             }
         },
         {
