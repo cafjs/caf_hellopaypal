@@ -9,7 +9,8 @@
        "caf_transport": "^0.4.0",
        "react" : "^16.6.0",
        "react-dom" : "^16.6.0",
-       "react-bootstrap" : "^0.32.4",
+        "react-bootstrap" : "^0.32.4",
+        "react-paypal-button-v2" : "^2.6.2",
        "redux": "^3.7.2",
        "keymirror": "^0.1.0"
     },

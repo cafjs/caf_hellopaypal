@@ -2,7 +2,12 @@ const AppConstants = require('../constants/AppConstants');
 
 const AppReducer = function(state, action) {
     if (typeof state === 'undefined') {
-        return  {counter: -1, increment: '1', isClosed: false};
+        return  {
+            username: '', error: null, isClosed: false,
+            price: '', capturedOrder: null, confirmation: false,
+            buyMode: false, buyUnits: '', clientId: null, crash: false,
+            pendingOrders: {}, orders: {}, units: 0
+        };
     } else {
         switch(action.type) {
         case AppConstants.APP_UPDATE:

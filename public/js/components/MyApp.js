@@ -5,7 +5,12 @@ const rB = require('react-bootstrap');
 const AppActions = require('../actions/AppActions');
 const AppStatus = require('./AppStatus');
 const DisplayError = require('./DisplayError');
-const Example = require('./Example');
+
+const Buy = require('./Buy');
+const Confirmation = require('./Confirmation');
+const ManagementPanel = require('./ManagementPanel');
+const TableOrders = require('./TableOrders');
+
 
 const cE = React.createElement;
 
@@ -42,6 +47,18 @@ class MyApp extends React.Component {
                       ctx: this.props.ctx,
                       error: this.state.error
                   }),
+                  cE(Buy, {
+                      ctx: this.props.ctx,
+                      buyMode: this.state.buyMode,
+                      buyUnits: this.state.buyUnits,
+                      price: this.state.price,
+                      clientId: this.state.clientId
+                  }),
+                  cE(Confirmation, {
+                      ctx: this.props.ctx,
+                      capturedOrder: this.state.capturedOrder,
+                      confirmation: this.state.confirmation
+                  }),
                   cE(rB.Panel, null,
                      cE(rB.Panel.Heading, null,
                         cE(rB.Panel.Title, null,
@@ -56,7 +73,7 @@ class MyApp extends React.Component {
                                      sm: 5,
                                      xs:10,
                                      className: 'text-right'
-                                 }, "hellopaypal"),
+                                 }, 'hellopaypal'),
                                  cE(rB.Col, {
                                      sm: 5,
                                      xs:11,
@@ -69,16 +86,28 @@ class MyApp extends React.Component {
                      cE(rB.Panel.Body, null,
                         cE(rB.Panel, null,
                            cE(rB.Panel.Heading, null,
-                              cE(rB.Panel.Title, null, "Counter")
+                              cE(rB.Panel.Title, null, 'Manage')
                              ),
                            cE(rB.Panel.Body, null,
-                              cE(Example, {
+                              cE(ManagementPanel, {
                                   ctx: this.props.ctx,
-                                  counter: this.state.counter,
-                                  increment: this.state.increment
+                                  units: this.state.units,
+                                  username: this.state.username,
+                                  crash: this.state.crash
                               })
                              )
-                          )
+                          ),
+                        cE(rB.Panel, null,
+                           cE(rB.Panel.Heading, null,
+                              cE(rB.Panel.Title, null, 'Transactions')
+                             ),
+                           cE(rB.Panel.Body, null,
+                              cE(TableOrders, {
+                                  pendingOrders: this.state.pendingOrders,
+                                  orders: this.state.orders
+                              })
+                             )
+                          ),
                        )
                     )
                  );
