@@ -43,7 +43,7 @@ const AppActions = {
     async init(ctx) {
         try {
             const data = await ctx.session.hello(ctx.session.getCacheKey())
-                    .getPromise();
+                  .getPromise();
             updateF(ctx.store, data);
         } catch (err) {
             errorF(ctx.store, err);

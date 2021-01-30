@@ -107,7 +107,7 @@ class MyApp extends React.Component {
                                   orders: this.state.orders
                               })
                              )
-                          ),
+                          )
                        )
                     )
                  );
