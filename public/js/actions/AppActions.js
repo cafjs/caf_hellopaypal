@@ -1,5 +1,6 @@
 const AppConstants = require('../constants/AppConstants');
 const json_rpc = require('caf_transport').json_rpc;
+const caf_cli =  require('caf_cli');
 
 const updateF = function(store, state) {
     const d = {
@@ -42,8 +43,9 @@ const AppActions = {
     },
     async init(ctx) {
         try {
-            const data = await ctx.session.hello(ctx.session.getCacheKey())
-                  .getPromise();
+            const token = caf_cli.extractTokenFromURL(window.location.href);
+            const data = await ctx.session.hello(ctx.session.getCacheKey(),
+                                                 token).getPromise();
             updateF(ctx.store, data);
         } catch (err) {
             errorF(ctx.store, err);
@@ -62,14 +64,21 @@ const AppActions = {
     },
     resetError(ctx) {
         errorF(ctx.store, null);
+        AppActions.cleanError(ctx);
     },
     setError(ctx, err) {
         errorF(ctx.store, err);
+    },
+    createOrder(ctx, units) {
+        return ctx.session.createOrder(units).getPromise();
+    },
+    captureOrder(ctx, id) {
+        return ctx.session.captureOrder(id).getPromise();
     }
 };
 
 const EXTERNAL_METHODS = [
-    'getPrice', 'createOrder', 'captureOrder', 'setCrash', 'getState'
+    'cleanError', 'getPrice', 'setCrash', 'getState'
 ];
 
 EXTERNAL_METHODS.forEach(function(x) {

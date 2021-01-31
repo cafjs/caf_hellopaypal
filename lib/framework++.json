@@ -5,7 +5,7 @@
         "appLocalName" : "process.env.APP_LOCAL_NAME||hellopaypal",
         "appSuffix" : "process.env.APP_SUFFIX||cafjs.com",
         "appCDN" : "process.env.APP_CDN||https://rootcdn-1734e.kxcdn.com",
-        "appSubdirCDN" : "process.env.APP_SUBDIR_CDN||v0.0.1"
+        "appSubdirCDN" : "process.env.APP_SUBDIR_CDN||v0.0.2"
      },
     "components": [
         {

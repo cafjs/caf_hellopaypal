@@ -9,9 +9,8 @@ class TableOrders extends React.Component {
 
     render() {
         const renderOneRow = function(i, order) {
-            const date = (new Date(order.created)).toLocaleString(
-                'en-US', {dateStyle: 'short', timeStyle: 'short', hour12: false}
-            );
+            const date = (new Date(order.created)).toISOString().slice(0, -5) +
+                  'Z';
             return cE('tr', {key:10*i},
                       cE('td', {key:10*i+1}, date),
                       cE('td', {key:10*i+6}, order.status),

@@ -16,9 +16,8 @@ class Confirmation extends React.Component {
     render() {
         const order = this.props.capturedOrder || {};
         const units  = order.units || 0;
-        const date = order && (new Date(order.created)).toLocaleString(
-            'en-US', {dateStyle: 'short', timeStyle: 'short', hour12: false}
-        );
+        const date = order.created && ((new Date(order.created))
+                                       .toISOString().slice(0, -5) + 'Z');
         return cE(rB.Modal,{show: !!this.props.confirmation,
                             onHide: this.doDismiss,
                             animation: false},
