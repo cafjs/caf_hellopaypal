@@ -3,16 +3,18 @@
     "description": "Cloud Assistants basic web example",
     "version": "0.4.0",
     "dependencies": {
-       "caf_react" :"^0.4.0",
-       "caf_core": "^0.4.0",
-       "caf_cli": "^0.4.0",
-       "caf_transport": "^0.4.0",
-       "react" : "^16.6.0",
-       "react-dom" : "^16.6.0",
+        "caf_react" :"^0.4.0",
+        "caf_core": "^0.4.0",
+        "caf_cli": "^0.4.0",
+        "caf_transport": "^0.4.0",
+        "caf_paypal" : "^0.4.0",
+        "@paypal/checkout-server-sdk": "^1.0.2",
+        "react" : "^16.6.0",
+        "react-dom" : "^16.6.0",
         "react-bootstrap" : "^0.32.4",
         "react-paypal-button-v2" : "^2.6.2",
-       "redux": "^3.7.2",
-       "keymirror": "^0.1.0"
+        "redux": "^3.7.2",
+        "keymirror": "^0.1.0"
     },
     "devDependencies": {
         "browserify" : "^17.0.0",
