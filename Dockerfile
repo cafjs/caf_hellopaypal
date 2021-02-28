@@ -5,7 +5,7 @@
 # TO_BUILD:        cafjs mkImage . gcr.io/cafjs-k8/<user>-hellopaypal
 # TO_RUN:         cafjs run --appImage gcr.io/cafjs-k8/<user>-hellopaypal hellopaypal
 
-FROM node:12
+FROM node:14
 
 EXPOSE 3000
 
