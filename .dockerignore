@@ -1,0 +1,7 @@
+node_modules
+**/node_modules
+build.js
+**/build.js
+build.min.js
+**/build.min.js
+**/iot.tgz

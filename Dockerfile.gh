@@ -1,0 +1,22 @@
+# VERSION 0.1
+# DOCKER-VERSION  1.7.0
+# AUTHOR:         Antonio Lain <antlai@cafjs.com>
+# DESCRIPTION:    Cloud Assistants application hellopaypal
+# TO_BUILD:       docker build --tag ghcr.io/cafjs/caf_hellopaypal .
+# TO_RUN:         cafjs run --appImage ghcr.io/cafjs/caf_hellopaypal hellopaypal
+
+FROM ghcr.io/cafjs/caf:latest
+
+EXPOSE 3000
+
+RUN mkdir -p /usr/src/app
+
+COPY . /usr/src/app
+
+RUN  cd /usr/src/app && yarn install --ignore-optional && cafjs build && rm -fr /usr/src/node_modules && yarn install --production --ignore-optional && yarn cache clean
+
+WORKDIR /usr/src/app
+
+ENTRYPOINT ["node"]
+
+CMD [ "./index.js" ]
